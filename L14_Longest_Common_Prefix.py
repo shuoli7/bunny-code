@@ -2,7 +2,7 @@
 # A list of strings
 
 # Output
-# The longest common prefix string amongst an array of strings
+# The longest common prefix string among a list of strings
 
 # Solution
 # Use the first string as the benckmark, and compare it with following strings one by one.
@@ -25,5 +25,5 @@ class Solution(object):
             res += strs[0][i]
         return res
 
-# Time complexity: O(mn)
+# Time complexity: O(mn) # m is length of first string, n is length of the list of strings.
 # Space complexity: O(1)
