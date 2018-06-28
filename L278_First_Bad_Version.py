@@ -11,8 +11,8 @@
 
 # To do that, I compute the the mid position with every round, and check the version
 # at mid position is bad or not, based on that I can decide to search right to mid or left to mid
-# in next round. When left go pass right, we jump out condition, the first bad version is
-# at the position my left pointer point to.
+# in next round. The jump out condition is left pointer passes right pointer.
+# The first bad version is at the position my left pointer point to.
 
 class Solution(object):
     def firstBadVersion(self, n):
@@ -23,7 +23,7 @@ class Solution(object):
         left = 1
         right = n
         while left < right:
-            mid = left + (right - left)/ 2 # Because left + right can be a very big number that leads to overflow
+            mid = left + (right - left) / 2 # Because left + right can be a very big number that leads to overflow
             if not isBadVersion(mid):
                 left = mid + 1
             else:
