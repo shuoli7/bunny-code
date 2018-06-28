@@ -1,12 +1,16 @@
 # Input: Two strings
-# Output: Return True if the two strings are isomorphic
+
+# Output: A boolean value, True if two strings are isomorphic, False if not.
+# Isomorphic means two strings have same structures, such as, abb and bcc.
+
 # Solution:
 # Here I use two maps to store s->t mapping and t->s mapping
-# Only when both maps has no key/value pairs, new pair is added to maps.
-# If only one of the pair of character exists, then return False.
-# If both characters in the pair exists in two dictionaries, but they are not 1-1 relationship,
-# then return False
-# If all characters in two strings are 1-1 relationship, we will return True.
+# Loop over the string s, in each iteration, we get a pair of numbers s[i], t[i].
+# If both numbers don't exist in the key set of the two maps,
+# we add s->t mapping and t->s mapping to the two maps respectively.
+# If only one of them existed in the key set of map, the other is not, return False.
+# If both of them existed in the map, but the mapping is wrong, 
+# for example map1[s[i]] != t[i], then return False.
 
 class Solution(object):
     def isIsomorphic(self, s, t):
@@ -15,6 +19,10 @@ class Solution(object):
         :type t: str
         :rtype: bool
         """
+        # Edge case
+        if len(s) != len(t):
+            return False
+
         map1 = {}
         map2 = {}
         for i in range(len(s)):
