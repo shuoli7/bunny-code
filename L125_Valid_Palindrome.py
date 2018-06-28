@@ -4,16 +4,19 @@
 # Output
 # A boolean true or false to determine if the input string is a palindrome.
 
-# Solution
-# To solve the problem, I use two pointers to check 
-# whether the leftmost character is equal to the rightmost character
-# During the comparison, if the two character is not the same, stop and return False
-# If two characters are same, we increment left pointer and decrement right pointer 
-# until two characters are different or pointers meet. 
-# At the end, if return false condition is not met, we return true.
-
 # Clarification
 # If the string is empty, is it a valid palindrome?
+# Does the input string contain non-alphanumeric chars?
+
+# Solution
+# To solve the problem, I use two pointers to check 
+# whether the leftmost character is equal to the rightmost character.
+
+# During the comparison, if the two character is not the same, stop and return False
+# If two characters are same, we increment left pointer and decrement right pointer 
+# until two characters are different or pointers meet.
+
+# At the end, if return false condition is not met, we return true.
 
 class Solution(object):
     def isPalindrome(self, s):
