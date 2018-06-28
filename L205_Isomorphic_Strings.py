@@ -6,11 +6,16 @@
 # Solution:
 # Here I use two maps to store s->t mapping and t->s mapping
 # Loop over the string s, in each iteration, we get a pair of numbers s[i], t[i].
+
 # If both numbers don't exist in the key set of the two maps,
 # we add s->t mapping and t->s mapping to the two maps respectively.
+
 # If only one of them existed in the key set of map, the other is not, return False.
+
 # If both of them existed in the map, but the mapping is wrong, 
 # for example map1[s[i]] != t[i], then return False.
+
+# At the end, if no return False case is hit, then we return True after jumping out of for loop.
 
 class Solution(object):
     def isIsomorphic(self, s, t):
