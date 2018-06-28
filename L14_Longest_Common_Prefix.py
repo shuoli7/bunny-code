@@ -5,7 +5,16 @@
 # The longest common prefix string among a list of strings
 
 # Solution
-# Use the first string as the benckmark, and compare it with following strings one by one.
+# We use the first string as the benchmark string, and use a for loop to iterate each char.
+# Under this iteration, we have another for loop that iterates the rest list of strings.
+
+# Then we compare and check at the current index position, if char from benchmark string is equal to char from
+# other strings.
+
+# If there is a mis-match or current index is over the length of any other string,
+# we stop here and return benchmark string sliced at current index position.
+
+# If both for loops end, we still don't meet a return condition. We return benchmark string.
 
 class Solution(object):
     def longestCommonPrefix(self, strs):
@@ -22,7 +31,7 @@ class Solution(object):
             for j in range(1, len(strs)):
                 if i >= len(strs[j]) or strs[j][i] != strs[0][i]:
                     return res
-            res += strs[0][i]
+            res = strs[0][:i + 1]
         return res
 
 # Time complexity: O(mn) # m is length of first string, n is length of the list of strings.
