@@ -44,3 +44,6 @@ class Solution:
         for i in s:
             res = res * 26 + ord(i) - ord("A") + 1
         return res
+
+# Time complexity: O(n)
+# Space complexity: O(1)
