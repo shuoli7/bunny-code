@@ -37,11 +37,12 @@ class Solution(object):
                     new_seq += str(count) + char # we add count and benchmark char to res
                     count = 1 # reset count to 1
                     char = res[j] # update benchmark char with current char
-            res = new_seq + str(count) + char # After all iterations, 
-            # we will need to add the last character and its count to the result.
+            res = new_seq + str(count) + char # After all iterations, we will need to add  
+                                              # the last character and its count to the result.
         return res
 
 # Time  Complexity: O(n * 2^n) # We have a for loop to iterate n - 1 times, 
-# and in each iteration, we iterate through a 2^n long string to build input string for next iteration.
+                               # and in each iteration, we iterate through a 2^n long string 
+                               # to build input string for next iteration.
 
 # Space Complexity: O(2^n) # through out our codes, we always maintain a string with length 2^n.
