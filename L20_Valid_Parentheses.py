@@ -5,13 +5,13 @@
 # A boolean, True if open brackets are closed by the same type of brackets in the correct order.
 # False if not.
 
-# The reason behind this is, it helps me implement comparison condition later,
-# it make codes more clean and retrieve information from dict is a O(1) action,
-# so it won't give me penalty on time.
-
 # Solution:
 # Use a dictionary to store right bracket in key 
 # and left bracket of the same type in value
+
+# The reason behind this is, it helps me implement comparison condition later,
+# it make codes more clean and retrieve information from dict is a O(1) action,
+# so it won't give me penalty on time.
 
 # Iterate over the string.
 # If the current char is in the dictionary value set, it means the current char is 
@@ -41,8 +41,10 @@ class Solution(object):
             else:
                 if not stack or dic[char] != stack.pop():
                     return False
-        return stack == [] # If stack is empty, means all parenthesis perfectly matched up, we return True.
-        # Otherwise, it means there is left-side bracket left in the stack, we return False.
+        return stack == [] # If stack is empty, means all parenthesis perfectly matched up, 
+                           # we return True.
+                           # Otherwise, it means there is left-side bracket left in the stack, 
+                           # we return False.
                 
 # Time complexity: O(n)                
 # Space complexity: O(1)
