@@ -1,21 +1,29 @@
-# Input: A string containing just brackets
+# Input: 
+# A string containing just brackets, {}, [], ().
 
-# Output: A boolean True or False
-# Return True if open brackets are closed by the same type of brackets in the correct order.
+# Output: 
+# A boolean, True if open brackets are closed by the same type of brackets in the correct order.
+# False if not.
+
+# The reason behind this is, it helps me implement comparison condition later,
+# it make codes more clean and retrieve information from dict is a O(1) action,
+# so it won't give me penalty on time.
 
 # Solution:
 # Use a dictionary to store right bracket in key 
 # and left bracket of the same type in value
 
 # Iterate over the string.
-# If the character is in the value, which means it is a left bracket,
-# store it in the stack
+# If the current char is in the dictionary value set, it means the current char is 
+# a left bracket, so we store it in the stack
 
-# If the character is not in the value, which means it is a right bracket,
-# if it is in a pair with the latest left bracket, or the current stack is empty,
-# it means that it is not a valid parentheses. Return False.
+# If the character is not in the dictionary value set, which means it is a right bracket,
+# if the current right bracket is not in a pair with the left bracket on stack top,
+# or the current stack is empty at this time,
+# then, it means that it is not a valid parentheses. We return False.
 
-# At the end, if the stack is empty, it means all parentheses are valid. Then return True.
+# At the end, if the stack is empty, it means all parentheses are matched up. We return True.
+# Otherwise, it means there is left-side bracket left in the stack, we return False.
 
 class Solution(object):
     def isValid(self, s):
@@ -24,16 +32,17 @@ class Solution(object):
         :rtype: bool
         """
         stack = []
-        dic = {")": "(",
-              "}": "{",
-              "]": "["}
-        for c in s:
-            if c in dic.values():
-                stack.append(c)
+        dic = {")" : "(",
+               "}" : "{",
+               "]" : "["}
+        for char in s:
+            if char in dic.values(): # If char is a left-side bracket
+                stack.append(char)
             else:
-                if not stack or dic[c] != stack.pop():
+                if not stack or dic[char] != stack.pop():
                     return False
-        return stack == []
+        return stack == [] # If stack is empty, means all parenthesis perfectly matched up, we return True.
+        # Otherwise, it means there is left-side bracket left in the stack, we return False.
                 
 # Time complexity: O(n)                
 # Space complexity: O(1)
