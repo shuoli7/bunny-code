@@ -1,8 +1,8 @@
-# Input
-# A list of stock price for some day
+# Input:
+# A list of stock prices, each price is for one day
 
 # Output:
-# Maximum profit we can get with unlimited transactions
+# An integer, which represents the maximum profit we can make after unlimited transaction.
 
 # Solution:
 # To solve this problem, we use greedy method, 
@@ -11,7 +11,7 @@
 # Iterate over the list.
 # The starting value of profit is 0.
 # Everytime the current value is larger the the previous one, we add the difference to the profit.
-# At the end of the iteration, we get the result.
+# At the end of the iteration, we get the result for all profits we can make.
 
 class Solution(object):
     def maxProfit(self, prices):
