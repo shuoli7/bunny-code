@@ -1,4 +1,5 @@
-# Input: A list of integers
+# Input:
+# A list of integers
 
 # Output: 
 # A boolean, True if there is duplicates in the list, False if not.
@@ -59,6 +60,6 @@ class Solution(object):
         return False
     
 # Time complexity: O(nlogn) # for most of sorting algorithms, including the algorithm behind
-						 	# build-in sort function. The average time complexity is O(nlogn), 
-						 	# most of time, the algorithm behind the build-in sort function is quick-sort.
+						    # build-in sort function. The average time complexity is O(nlogn), 
+						    # most of time, the algorithm behind the build-in sort function is quick-sort.
 # Space complexity: O(1)
