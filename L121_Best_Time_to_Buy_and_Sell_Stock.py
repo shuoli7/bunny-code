@@ -30,11 +30,11 @@ class Solution(object):
         if not prices:
             return 0
         
-        currMin = prices[0]
+        curr_Min = prices[0]
         max_profit = 0
         for price in prices:
-            currMin = min(currMin, price)
-            max_profit = max(price - currMin, max_profit)
+            curr_Min = min(curr_Min, price)
+            max_profit = max(price - curr_Min, max_profit)
         return max_profit
 
 # Time complexity: O(n)
