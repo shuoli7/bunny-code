@@ -1,16 +1,18 @@
 # Input: A list of integers
 
-# Output: A boolean True or False. If there are no duplicates in the list, it's False.
-#Else, it is True
+# Output: 
+# A boolean, True if there is duplicates in the list, False if not.
 
 # Method 1
 
 # Solution:
-# Creat a set to store the number if it is not in the set.
-# Iterate over the list. If the number is in the set, return True.
+# We create a set to help check duplicates, because put and search actions 
+# (due to hashing) for set is a O(1) process.
 
-# After finishing all loops, if we never return True, 
-# it means that there are no duplicates in the list, then we return False.
+# Iterate over the list. If the number is in the set, 
+# it means there is a duplicate number, return True.
+
+# After finishing all iterations, if we still didn't hit a duplicate, we return False.
 
 class Solution(object):
     def containsDuplicate(self, nums):
@@ -33,15 +35,16 @@ class Solution(object):
 # Method 2
 
 # Solution:
-# To reduce the scape complexity to be O(1),
+# To reduce the space complexity to be O(1),
 # we can sort the list first.
 
-# Then we can compare each number in the list with the previous one.
+# Then Iterate over the list.
+# compare each number in the list with the previous one.
 
-# If the current number is same as the previous number, return Ture
+# If the current number is same as the previous number, 
+# it means there is a duplicate number, return Ture
 
-# After finishing all loops, if we never return True, 
-# it means that all the numbers are different in the list, then we return False.
+# After finishing all iterations, if we still didn't hit a duplicate, we return False.
 
 class Solution(object):
     def containsDuplicate(self, nums):
@@ -55,5 +58,7 @@ class Solution(object):
                 return True
         return False
     
-# Time complexity: O(nlogn)
+# Time complexity: O(nlogn) # for most of sorting algorithms, including the algorithm behind
+						 	# build-in sort function. The average time complexity is O(nlogn), 
+						 	# most of time, the algorithm behind the build-in sort function is quick-sort.
 # Space complexity: O(1)
