@@ -20,7 +20,8 @@ class Solution(object):
         res = 0
         length = len(s)
         for i in reversed(range(length)):
-            res += (ord(s[i]) - ord("A") + 1)*(26**(length - 1 - i))
+            res += (ord(s[i]) - ord("A") + 1) * (26 ** (length - 1 - i)) # ord(), given a string with length 1 or a character, 
+                                                                         # output the corresponding unicode number.
         return res
 
 # Optimized solution:    
