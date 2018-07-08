@@ -4,7 +4,7 @@
 # Output:
 # An integer, which represents the index of first non-repeating char in the string.
 
-# Solution2 (hashmap)
+# Solution1 (hashmap)
 # To solve this problem, we use a dictionary to help implementation.
 
 # Loop over the string,
@@ -37,7 +37,7 @@ class Solution(object):
                 return i
         return -1
 
-# Solution3 (unicode)
+# Solution2 (unicode)
 # To solve this problem, we create a list with length of 26.
 
 # The index of this list represents the unicode distance from current char to 'a',
@@ -71,4 +71,32 @@ class Solution(object):
         for i in range(len(s)):
             if chars[ord(s[i]) - ord('a')] == 1:
                 return i
+        return -1
+
+# Solution3 (bruteforce)
+# To solve this problem,
+# we compare each char with the rest of chars in the string with two nested loops.
+
+# If we don't find a match for certain char, we return index for char in outside loop.
+# If we find a match, we continue the outside loop.
+# If at the end of two loops, we still didn't hit return index case, we return -1.
+
+# Time complexity: O(n^2)
+# Space complexity: O(1)
+
+class Solution(object):
+    def firstUniqChar(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        i = 0
+        for i in range(len(s)):
+            is_exist = True
+        for j in range(len(s)):
+                if i != j and s[i] == s[j]:
+                    isExist = False
+                    break
+            if isExist:
+                return i   
         return -1
