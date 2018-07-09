@@ -2,35 +2,26 @@
 # A list of integers
 
 # Output:
-# A list of output, each output[i] is the product of all intergers
-# in the list except the ith element.
+# An output list, 
+# each element represents product of integers at all positions expect current position.
 
 # Solution:
-# To get each element in the output,
-# we multiply all integers that come before the current integer all the way up,
-# and all integers that come after it all the way back.
+# To solve this problem, we first create an output array and initialize all elements to be 1.
 
-# We set the output to be an array of ones with same length as the input list.
+# To compute final result of each element in the output list,
+# we maintain a variable called prod,
+# which represents the product of numbers in all previous rounds.
 
-# Then we initiate a product variable to be one,
-# this variable means the product of all numbers before the current number.
-# We walk through the input list forward.
-# For the output array at any given point, we are going to multiply it by the product.
-# And set it to that result.
-# The product itself becomes what we are looking at in the nums.
-# We multiply on the element in nums.
+# We use two loops.
+# In first loop, we iterate nums from left to right.
+# In each round, we first update output[i] by multiplying prod,
+# then we update prod by multiplying current num in this round.
 
-# Then, we go through the backwards ways and do the same thing.
+# In second loop, we reset prod to 1 
+# and iterate nums from right to left, in each round we do the same thing.
 
-# Reset the product to be one.
-# And we walk through the array from the other way.
-
-# For the output array at any given point, we are going to multiply it by that product.
-# And set it to that result.
-# The product itself is set to what we are looking at in the nums.
-# We multiply on the element in nums.
-
-# At the end of these two iterations, we get the output we want.
+# In this way, output[i] has product of all numbers in list nums except number at position i.
+# We can output the result.
 
 class Solution(object):
     def productExceptSelf(self, nums):
@@ -38,7 +29,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-        output = [1] * len(nums)
+        output = [1] * len(nums) # Output array doesn't count for space complexity.
         
         prod = 1
         for i in range(len(nums)):
@@ -53,4 +44,4 @@ class Solution(object):
         return output
 
 # Time complexity: O(n)
-# Space complexity: O(1) # The output array has the same length as the input array.
+# Space complexity: O(1)
