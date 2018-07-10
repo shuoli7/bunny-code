@@ -21,9 +21,6 @@
 
 # Then, we compare curr_sum with max_sum, and set max_sum with the bigger one.
 
-# So in this way, we start from finding larger current sum in each round.
-# After finishing the iteration, we get the max_sum we want.
-
 class Solution(object):
     def maxSubArray(self, nums):
         """
