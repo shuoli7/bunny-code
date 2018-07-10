@@ -2,17 +2,27 @@
 # A list of numbers
 
 # Output:
-# An interger, which is the largest sum of the subarray
+# An interger, which is the largest sum of a continguous subarray
 
 # Solution:
-# Set both current sum and max sum to be the first number in the list.
-# Iterate over the list from the second number.
+# To solve this problem, I am thinking to use a dynamic programming method.
+# Basically I start from solving subproblems, and build up to solving the big problem.
 
-# If the current sum is larger than the sum of current number and current sum,
-# we keep the current sum;
-# Otherwise, current number is updated.
+# To do that, first I create two variables for help,
+# curr_sum, which represents the current sum of contiguous subarray
+# before adding the current number.
+# max_sum, which represents the overall max sum of one contiguous subarray so far.
 
-# At the end, we compare those current sums and get the max sum.
+# During my iteration over the given list of numbers, I keep updating these two variables.
+
+# If current number is bigger than the current sum plus current number,
+# we set current number to be current_sum,
+# because that means curr_num is a negative value.
+
+# Then, we compare curr_sum with max_sum, and set max_sum with the bigger one.
+
+# So in this way, we start from finding larger current sum in each round.
+# After finishing the iteration, we get the max_sum we want.
 
 class Solution(object):
     def maxSubArray(self, nums):
