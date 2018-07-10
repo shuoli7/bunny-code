@@ -12,15 +12,22 @@
 # and 'A' by take mod 26 on n - 1.
 
 # The reason we do n - 1 is 'A' equals to 1; For example, AB -> 28,
-# with our logic, 28 % 26 = 2, we get C, so
-# we should compensate that by minus 1 first.
+# with our logic, 28 % 26 = 2, then we get C for the rightmost letter.
+# So we should compensate that by n - 1.
 
-# Then, we can get the letter by using build-in python function chr().
+# Then, we can get the current rightmost letter by using build-in python function chr(),
+# and add this letter to the left of previous result.
 
-# We add this letter to the left-most position to previous result,
-# then we divide n by 26, and go to the next round.
+# Next, we should divide n by 26.
+
+# To know why we do that, I will still take the example of 28.
+# In the first round, we get the rightmost letter to be 'B'.
+# To find the letter in the left of 'B' in the next round,
+# we divide n by 26, which means that we right-shift n by 1 step with base 26.
+# Now, we get n to be 1. In the next round, we get the corresponding letter to be 'A'.
 
 # After finishing all rounds, we have the string of letters.
+# With the example of 28, our final result is 'AB'.
 
 class Solution(object):
     def convertToTitle(self, n):
@@ -31,11 +38,11 @@ class Solution(object):
         res = ""
         
         while n > 0:
-            n -= 1 # right-shift n by 1 step
+            n -= 1 # 
             unit = n % 26 # get right-most letter
             res = chr(ord("A") + unit) + res
-            n /= 26
+            n /= 26 # right-shift n by 1 step with base 26
         return res
             
 # Time complexity: O(n)
-# Space complexity: O(1)
+# Space complexity: O(1) # memory used to store the result should not be counted 
