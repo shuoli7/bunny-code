@@ -1,5 +1,5 @@
 # Input:
-# An list of integers
+# A list of integers
 
 # Output:
 # An integer, which represents the length of shortest subarray.
@@ -8,8 +8,8 @@
 # Solution 1:
 
 # If the input array is in an ascending order, then each number should be the current max
-# among numbers starting from the beginning during iteration.
-# Also, each number should be the current minimum among numbers starting from the end.
+# when we iterate from left to right.
+# Also, each number should be the current minimum when we iterate from right to left.
 
 # To solve this problem, first we create two variables represent the current max
 # and current min respectively.
