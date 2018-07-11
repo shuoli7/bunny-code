@@ -1,11 +1,57 @@
 # Input:
-# An array of integers
+# An list of integers
 
 # Output:
 # An integer, which represents the length of shortest subarray.
 # if we sort this subarray in ascending order, then the whole array will be sorted too.
 
 # Solution 1:
+
+# If the input array is in an ascending order, then each number should be the current max
+# among numbers starting from the beginning during iteration.
+# Also, each number should be the current minimum among numbers starting from the end.
+
+# To solve this problem, first we create two variables represent the current max
+# and current min respectively.
+
+# Iterate over the list from left to right first, and find the last time that the current number 
+# is not equal to the current max. Then the index is the end point of the subarray.
+
+# Next, Iterate over the list from right to left, and find the last time that the current number 
+# is not equal to the current min. Then the index is the start point of the subarray.
+
+# At the end, the length of the subarray is the distance between its staring point and ending point.
+
+class Solution(object):
+    def findUnsortedSubarray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        start = 0
+        end = 0
+        max_num = nums[0]
+        min_num = nums[len(nums) - 1]
+        
+        for i in range(len(nums)):
+            max_num = max(max_num , nums[i])
+            if nums[i] != max_num:
+                end = i
+                
+        for j in reversed(range(len(nums))) :
+            min_num = min(min_num , nums[j])
+            if nums[j] != min_num:
+                start = j
+                
+        if start == end: # that means the given list is already sorted.
+            return 0
+        else:
+            return end - start + 1
+
+# Time complexity: O(n)
+# Space complexity: O(1)
+
+# Solution 2:
 
 # To find length of the subarray, we need to find its staring point and ending point.
 
@@ -51,49 +97,6 @@ class Solution(object):
             j += 1
         
         return j - i + 1
-
-# Time complexity: O(n)
-# Space complexity: O(1)
-
-# Solution 2:
-
-# If the input array is in an ascending order, then each number should be the current max
-# among numbers starting from the beginning one.
-# Also, each number should be the current minimum among numbers starting from the end.
-
-# Iterate over the list from left to right first, and find the last number 
-# that is not equal to the current max. That is the end point of the subarray.
-
-# Then Iterate over the list from right to left, and find the last number 
-# that is not equal to the current min. That is the start point of the subarray.
-
-# At the end, the length of the subarray is the distance between its staring point and ending point.
-
-class Solution(object):
-    def findUnsortedSubarray(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        start = 0
-        end = 0
-        max_num = nums[0]
-        min_num = nums[len(nums) - 1]
-        
-        for i in range(len(nums)):
-            max_num = max(max_num , nums[i])
-            if nums[i] != max_num:
-                end = i
-                
-        for j in reversed(range(len(nums))) :
-            min_num = min(min_num , nums[j])
-            if nums[j] != min_num:
-                start = j
-                
-        if start == end:
-            return 0
-        else:
-            return end - start + 1
 
 # Time complexity: O(n)
 # Space complexity: O(1)
