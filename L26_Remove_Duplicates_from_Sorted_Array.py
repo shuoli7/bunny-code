@@ -18,9 +18,8 @@
 # and increase the count index j by 1.
 # In this way we can make sure that all the numbers left to position j are distinct.
 
-# At the end, we can simply return j.
-# As all the numbers left to position j are distinct,
-# the length of the list without duplicate numbers is j.
+# At the end, we can simply return j,
+# because all the numbers left to position j contains one copy of each distinct number.
 
 class Solution(object):
     def removeDuplicates(self, nums):
