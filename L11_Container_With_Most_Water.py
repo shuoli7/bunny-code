@@ -1,5 +1,5 @@
 # Input: 
-# A list of non-negative integers, represent the height of vertical lines
+# A list of non-negative integers, represents the height of vertical lines
 
 # Output:
 # An interger, which means the maximum water the container can hold
@@ -7,38 +7,31 @@
 
 # Solution:
 
-# To caculate the maximum water area that the container can hold,
+# To solve this problem, I use DP method, break down a complex problem to sub-problems.
+# In this particular problem, we keep update max area in each round of iteration.
+
+# To calculate the maximum water area that the container can hold,
 # we multiply height of the container by the length of the container.
 # Height of the contaier should be the shorter one of two lines,
 # length of the container should be the distance between two lines.
 
-# To solve this problem, we use two pointers 'left' and 'right' to iterate over the list simultaneously.
+# We use two pointers 'left' and 'right' to iterate over the list simultaneously.
 # Pointer left starts from first line in the list, while pointer right starts from last one.
 
-# At each iteration, we caculate the container area between current left line and right line,
-# and then compare the current area with the current maximum area containing water.
+# In each round, we calculate the container area between current left line and right line,
+# and compare the current area with the current maximum area containing water.
 
 # Then, we compare the height of current left line and right line.
-
 # If the left line is shorter than the right line, we move the left pointer to the next line;
 # otherwise, we move the right pointer to the previous line.
-# Then, we compute and get the max water area in another iteration.
+# The reason behind this is,
+# we can possibly get a bigger max area than previous one in next round.
+
+# Then, we compute and get the max water area in next round.
 
 # While left pointer meets the right pointer, the loop ends. 
 # Then we can get the maximum water the container holds.
 
-"""
-# Exceeds time limit
-class Solution(object):
-    def maxArea(self, height):
-
-        max_water = 0
-  
-        for i in range(len(height) - 1):
-            for j in range(i, len(height)):
-                max_water =max(min(height[i], height[j]) * (j - i), max_water) 
-        return max_water
-"""
 class Solution(object):
     def maxArea(self, height):
         """
