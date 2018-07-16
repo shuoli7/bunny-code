@@ -1,7 +1,19 @@
-# In this problem, we want to implement the following operations (push, pop, top, empty) of a stack using queues.
+# In this problem, we want to implement the following operations
+# (push, pop, top, empty) of a stack using queues.
+# Time complexity for push is O(1)
+# Time complexity for pop is O(n)
+# Time complexity for top is O(1)
+# Time complexity for empty is O(1)
 
-# To keep track of the top element, we use queue 1 to store the top element,
-# and we use queue 2 to store previous elements.
+# We use queue 1 to keep track of the top element,
+# so queue 1 will have at most 1 element always.
+# We also use queue 2 to store previous elements.
+
+# When we operate push, the element last added in the stack should be the top element.
+# We check whether queue 1 is empty first.
+# If queue 1 is not empty, it means, there was a top element inside.
+# So we pop that item out, and add it into the queue 2.
+# Then we add the new element to queue 1.
 
 # When we operate pop, we remove the top element in queue 1,
 # and push all element in queue 2 to the empty queue 1, except one element.
@@ -41,9 +53,8 @@ class MyStack(object):
         if len(self.queue1) > 0:
             self.curr_top = self.queue1.pop()
             
-        #self.queue1.pop(0) 
         while len(self.queue2) > 1:
-            self.queue1.append(self.queue2.pop(0))   
+            self.queue1.append(self.queue2.pop(0)) # pop(0) means it removes the first element
         self.queue1, self.queue2 = self.queue2, self.queue1
             
         return self.curr_top
