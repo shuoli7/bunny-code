@@ -19,7 +19,7 @@
 # In stack, the top element is the last added element.
 
 # getMin():
-# The minimum element is the last element in the min_stack.
+# The minimum element is the top element in the min_stack.
 
 
 class MinStack(object):
