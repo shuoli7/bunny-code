@@ -1,8 +1,24 @@
 # We are asked to implement the following operations (push, pop, peek, empty) of a queue using stacks.
+# Time complexity for push is O(1)
+# Time complexity for pop is O(n)
+# Time complexity for peek is O(n)
+# Time complexity for empty is O(1)
 
-# To solve this problem, we need to store the elements in order of pushing in queue 1
-# Then we pop out elemens in queue 1 and store them in queue 2
-# In this way, we store elements in a reversed order in queue 2
+# To solve this problem, we need to store the elements in order in stack 1.
+# Then we pop elements in stack 1 out and store them in stack 2.
+# In this way, we store elements in a reversed order in stack 2.
+
+# When we operate push, we add the new element to stack 1.
+
+# When we operate pop, we get the top element in stack 1 first,
+# and pop out the last element in stack 2, which is exactly the front element in stack 1.
+
+# When operating peek, to obtain the top element in stack 1,
+# we actually look for the last element in stack 2
+# because elements are in a reversed order in stack 2.
+
+# When operating empty, we check the length of both stacks.
+# if both stacks are empty, then the queue is empty.
 
 class MyQueue(object):
 
@@ -10,8 +26,8 @@ class MyQueue(object):
         """
         Initialize your data structure here.
         """
-        self.queue1 = []
-        self.queue2 = []
+        self.stack1 = []
+        self.stack2 = []
 
     def push(self, x):
         """
@@ -19,7 +35,7 @@ class MyQueue(object):
         :type x: int
         :rtype: void
         """
-        self.queue1.append(x)
+        self.stack1.append(x)
 
     def pop(self):
         """
@@ -27,24 +43,24 @@ class MyQueue(object):
         :rtype: int
         """
         self.peek()
-        return self.queue2.pop()
+        return self.stack2.pop()
 
     def peek(self):
         """
         Get the front element.
         :rtype: int
         """
-        if not self.queue2:
-            while self.queue1:
-                self.queue2.append(self.queue1.pop())
-        return self.queue2[-1]
+        if not self.stack2:
+            while self.stack1:
+                self.stack2.append(self.stack1.pop())
+        return self.stack2[-1]
 
     def empty(self):
         """
         Returns whether the queue is empty.
         :rtype: bool
         """
-        return len(self.queue1) == 0 and len(self.queue2) == 0
+        return len(self.stack1) == 0 and len(self.stack2) == 0
 
 
 # Your MyQueue object will be instantiated and called as such:
