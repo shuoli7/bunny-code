@@ -50,7 +50,7 @@ class MyStack(object):
         Removes the element on top of the stack and returns that element.
         :rtype: int
         """
-        if len(self.queue1) > 0:
+        if self.queue1:
             self.curr_top = self.queue1.pop()
             
         while len(self.queue2) > 1:
@@ -74,8 +74,6 @@ class MyStack(object):
         :rtype: bool
         """
         return len(self.queue1) == 0 and len(self.queue2) == 0
-        
-
 
 # Your MyStack object will be instantiated and called as such:
 # obj = MyStack()
