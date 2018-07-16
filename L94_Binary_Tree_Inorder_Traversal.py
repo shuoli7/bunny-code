@@ -2,19 +2,17 @@
 # A binary tree
 
 # Output:
-# A list of the inorder traversal of its nodes' values.
-# This means that we want to print out left node, root, right node sequentially.
+# A list of values of tree nodes from inorder traversal
+# (traverse nodes in the order of node.left -> node -> node.right).
 
 # Solution 1:
-# Iterative (BFS)
+# Iterative (DFS)
 
-# To solve this problem, we can build a result list and a stack for help.
+# To solve this problem, we can build a stack for help.
 # If the root is not empty, we store the root into the stack, and make root.left to be the new root.
-# We keep doing that until there is not root.left.
-# At this time, we add all nodes in the leftmost branch to the stack.
+# We keep doing that until root.left is None.
 
 # Then, if the stack is not empty, we pop the top item in the stack out and add it to result list.
-# In this way, we add the node.left in the result list.
 
 # Next, we will add the node, and the node.right to the result.
 
@@ -27,19 +25,18 @@ class Solution(object):
         :rtype: List[int]
         """
         res, stack = [], []
-        while True:
-            while root:
+        while root:
+            if root: # DFS goes to the left-most leaf
                 stack.append(root)
                 root = root.left
-            if stack:
+            else: # node.left is None, print out node value, then check its right node
                 node = stack.pop()
                 res.append(node.val)
                 root = node.right
-            else:
-                return
+        return
     
-# Time complexity: O(n)
-# Space complexity: O(1)
+# Time complexity: O(h) # h is the height of the binary tree
+# Space complexity: O(n)
 
 # Solution 2:
 # Recursive (DFS)
