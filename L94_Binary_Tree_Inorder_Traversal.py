@@ -12,11 +12,11 @@
 # If the root is not empty, we store the root into the stack, and make root.left to be the new root.
 # We keep doing that until root.left is None.
 
-# Then, if the stack is not empty, we pop the top item in the stack out and add it to result list.
+# Then, if the root.left is None, we pop the top item in the stack out and add it to result list.
+# Next, we will make the node.right to the new root.
 
-# Next, we will add the node, and the node.right to the result.
-
-# When stack is empty, we stop. At this time, we have added all nodes in the tree to the result list.
+# When root is None and stack is empty, we stop.
+# At this time, we have added all nodes in the tree to the result list.
 
 class Solution(object):
     def inorderTraversal(self, root):
@@ -25,7 +25,7 @@ class Solution(object):
         :rtype: List[int]
         """
         res, stack = [], []
-        while root:
+        while root or stack:
             if root: # DFS goes to the left-most leaf
                 stack.append(root)
                 root = root.left
@@ -35,8 +35,8 @@ class Solution(object):
                 root = node.right
         return
     
-# Time complexity: O(h) # h is the height of the binary tree
-# Space complexity: O(n)
+# Time complexity: O(n)
+# Space complexity: O(h) # h is the height of the binary tree
 
 # Solution 2:
 # Recursive (DFS)
@@ -48,7 +48,6 @@ class Solution(object):
 # Then, we traverse the right subtree by calling helper(right-subtree)
 
 # In the end, we return left-subtree, node, and right-subtree in order.
-
 
 class Solution(object):
     def inorderTraversal(self, root):
@@ -68,4 +67,4 @@ class Solution(object):
         self.helper(root.right, res)
     
 # Time complexity: O(n)
-# Space complexity: O(1)
+# Space complexity: O(h) # h is the height of the binary tree
