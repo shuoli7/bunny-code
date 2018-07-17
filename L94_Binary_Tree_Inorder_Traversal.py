@@ -9,14 +9,19 @@
 # Iterative (DFS)
 
 # To solve this problem, we can build a stack for help.
-# If the root is not empty, we store the root into the stack, and make root.left to be the new root.
-# We keep doing that until root.left is None.
+# The reason we should use stack is because we need to go over all leftmost nodes before printing
+# in order to achieve inorder traversal.
 
-# Then, if the root.left is None, we pop the top item in the stack out and add it to result list.
-# Next, we will make the node.right to the new root.
+# If the root is not None, we add the root into the stack.
+# Then we make root.left to be the new root and keep checking if it is None or not.
 
-# When root is None and stack is empty, we stop.
-# At this time, we have added all nodes in the tree to the result list.
+# If the root.left is None, it means the top node in the stack is the leftmost node.
+# So, we pop it out and add its value to result list.
+
+# Next, we will make the node.right to the new root, and continue the iteration.
+
+# When root is None and stack is empty, it means that all nodes in the tree have been added
+# to the result list. So we should stop and return result list.
 
 class Solution(object):
     def inorderTraversal(self, root):
@@ -33,7 +38,7 @@ class Solution(object):
                 node = stack.pop()
                 res.append(node.val)
                 root = node.right
-        return
+        return res
     
 # Time complexity: O(n)
 # Space complexity: O(h) # h is the height of the binary tree
