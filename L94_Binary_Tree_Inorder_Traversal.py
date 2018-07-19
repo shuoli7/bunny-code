@@ -63,12 +63,9 @@ class Solution(object):
 # until we reach the left-most node whose left child is None,
 # then we know that this is the candidate node to be printed out.
 
-# Once we print out the root.left node, we go back up and print that root value out.
-
-# Then we will go down to the right by recursively calling helper function.
+# Once we print out the root node, we move to the right.
+# Then we recursively call helper function again,
 # this time we take root.right as root and repeat the same logic.
-
-# So we always go left first, and then go right afterwards. This is definition of inorder traversal.
 
 # After all functions returned, we go back to the top level call in inorderTraversal function,
 # we will have all node values in the result list, so we can return the result list.
