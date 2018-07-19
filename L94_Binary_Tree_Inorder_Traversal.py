@@ -9,19 +9,24 @@
 # Iterative (DFS)
 
 # To solve this problem, we can build a stack for help.
-# The reason we should use stack is because we need to go over all leftmost nodes before printing
-# in order to achieve inorder traversal.
+# The reason we should use stack is that stack is Last-in-First-out, such that we can do DFS.
+# As we traverse down to the left, we push nodes into the stack.
+# and then when we go as far left as we can go , we pop the node out and print its value.
+
+# Basically, we go left first. Print everything that is down left. Then we go up, and print.
+# Then we go down to right and see if we can go left again.
 
 # If the root is not None, we add the root into the stack.
 # Then we make root.left to be the new root and keep checking if it is None or not.
 
-# If the root.left is None, it means the top node in the stack is the leftmost node.
-# So, we pop it out and add its value to result list.
+# If the root.left is None, it means the top node in the stack is the candidate node
+# that is ready to be printed.
+# So, we pop it out and print its value.
+ 
+# Next, we will make the node.right to the new root, and continue the iteration with the same logic.
 
-# Next, we will make the node.right to the new root, and continue the iteration.
-
-# When root is None and stack is empty, it means that all nodes in the tree have been added
-# to the result list. So we should stop and return result list.
+# When root is None and stack is empty, it means that all nodes in the tree have been visited 
+# ans their values have been added to the result list. So we should stop and return result list.
 
 class Solution(object):
     def inorderTraversal(self, root):
@@ -47,12 +52,26 @@ class Solution(object):
 # Recursive (DFS)
 
 # To solve this problem, we use the recursive method.
-# First, we build a helper.
-# Then, we traverse the left subtree by calling helper(left-subtree)
-# Next, we add root value to the result.
-# Then, we traverse the right subtree by calling helper(right-subtree)
 
-# In the end, we return left-subtree, node, and right-subtree in order.
+# We define a helper function, which takes root node and result list as arguments.
+# We call this helper function inside inorderTraversal().
+
+# In the helper function, we first define the return condition to be root equals to None.
+
+# As we need to go all the way down to the left first,
+# we recursively call helper function to the root.left
+# until we reach the left-most node whose left child is None,
+# then we know that this is the candidate node to be printed out.
+
+# Once we print out the root.left node, we go back up and print that root value out.
+
+# Then we will go down to the right by recursively calling helper function.
+# this time we take root.right as root and repeat the same logic.
+
+# So we always go left first, and then go right afterwards. This is definition of inorder traversal.
+
+# After all functions returned, we go back to the top level call in inorderTraversal function,
+# we will have all node values in the result list, so we can return the result list.
 
 class Solution(object):
     def inorderTraversal(self, root):
