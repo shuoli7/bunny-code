@@ -63,7 +63,7 @@ class Solution(object):
 # until we reach the left-most node whose left child is None,
 # then we know that this is the candidate node to be printed out.
 
-# Once we print out the root node, we move to the right.
+# After we print out the root node, we move to the right.
 # Then we recursively call helper function again,
 # this time we take root.right as root and repeat the same logic.
 
