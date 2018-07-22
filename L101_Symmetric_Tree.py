@@ -2,13 +2,13 @@
 # A binary tree
 
 # Output:
-# A boolean variable. Return True if the tree is symmetric around its center. Otherwise, return False.
+# A boolean variable. Return True if the tree is symmetric. Otherwise, return False.
 
-# Solution (Recursive)
-# To solve this problem, we use recursive method.
+# Solution (Recursion)
+# To solve this problem, we use recursion method.
 
 # We define a helper function, which takes root.left and root.right as arguments.
-# We call the helper function inside.
+# We call the helper function inside isSymmetric function.
 
 # In the helper function, we define three return conditions.
 # If both left node and right node are None, we return True.
@@ -42,12 +42,14 @@ class Solution:
     def isMirror(self, left, right):
         if not left and not right:
             return True
+
         if not left or not right:
             return False
-        if left and right and left.val != right.val:
+        
+        if left.val != right.val:
             return False
         else:
             return self.isMirror(left.left, right.right) and self.isMirror(left.right, right.left)
  
 # Time complexity: O(n)        
-# Space complexity: O(1)
+# Space complexity: O(h)
