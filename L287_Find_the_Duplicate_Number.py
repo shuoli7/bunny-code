@@ -3,12 +3,13 @@
 # where each integer is between 1 and n (inclusive)
 
 # Output:
-# The duplicate number.
+# An integer, the duplicate number.
 
 # Solution 1:
 # Binary Search
 # As all these integers are between 1 and n,
-# we initiate minimum to be 1, maximum is len(nums), and find the middle.
+# we will solve this problem with binary search, first we initiate min to be 1,
+# max to be len(nums) - 1, and find the middle.
 
 # We count the elements falling in the range[minimum, mid].
 # If the count is larger than the capacity of this sub-range,
@@ -18,7 +19,7 @@
 # Otherwise, the duplicate number is in the other half sub-range.
 # So, we set minimum to be mid + 1
 
-# We keep iterating over the input list until minmum is larger than maximum.
+# We keep doing binary search over the input list until minmum is larger than maximum.
 # At this time, the duplicate number is the minimum.
 
 class Solution(object):
@@ -31,7 +32,7 @@ class Solution(object):
         maximum = len(nums) - 1
         
         while minimum <= maximum:
-            mid = minimum + (maximum - minimum) / 2
+            mid = int(minimum + (maximum - minimum) / 2)
             count = 0
             for num in nums:
                 if num <= mid:
