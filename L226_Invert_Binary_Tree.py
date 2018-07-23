@@ -2,7 +2,7 @@
 # A binary tree
 
 # Output:
-# An inverted binary tree. Basically, root.left node and root.right are swapped.
+# An inverted binary tree. Basically, for each node, we swap its left and right nodes.
 
 # Solution (Recursion)
 # The base case for the recursion is when root is None, return None.
@@ -30,12 +30,14 @@ class Solution(object):
         """
         if not root:
             return None
+
         if root.left:
             self.invertTree(root.left)
+
         if root.right:
             self.invertTree(root.right)
         root.left, root.right = root.right, root.left
         return root
 
 # Time complexity: O(n)
-# Space complexity: O(1)
+# Space complexity: O(h)
