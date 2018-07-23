@@ -5,7 +5,12 @@
 # Output:
 # An integer, the duplicate number.
 
-# Solution 1:
+# Constraints:
+# We can not modify the array, so we can not swap elements to reorder the array.
+# We must use only constant, O(1) extra space, so we can not build a new set or dictionary for help.
+# The runtime complexity should be less than O(n ^ 2), so brute force method is not proper.
+
+# Solution:
 # Binary Search
 # As all these integers are between 1 and n,
 # we will solve this problem with binary search, first we initiate min to be 1,
