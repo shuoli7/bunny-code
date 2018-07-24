@@ -2,14 +2,23 @@
 # A binary tree
 
 # Output:
-# A list of the inorder traversal of its nodes' values.
-# This means that we want to print out left node, right node, and root sequentially.
+# A list of values of tree nodes from preorder traversal
+# (traverse nodes in the post order of node.left -> node.right -> node).
 
 # Solution 1:
 # Iterative (BFS)
 
-# To solve this problem, we can achieve a Root-Right-Left traverse (similar as preorder traverse)
-# and return the reversed result (Left-Right-Root)
+# To solve the problen, we can find a list of values of tree nodes
+# in order of node -> node.right -> node.left.
+# Then, the reversed list of nodes is in postorder.
+
+# To solve this problem, we can build a stack for help.
+# The reason we should use stack is that stack is Last-in-First-out, such that we can do DFS.
+
+# As we traverse down the tree, we push node.right, node.left into the stack.
+# and then when we go as far as we can go, we pop the stack out and add its value to res.
+
+# At the end, the reversed res list is what we want
 
 class Solution(object):
     def postorderTraversal(self, root):
@@ -31,29 +40,24 @@ class Solution(object):
 # Solution 2:
 # Recursive (DFS)
 
-# To solve this problem, we use the recursive method.
-# First, we build a helper.
-# Then, we traverse the left subtree by calling helper(left-subtree)
-# Next, we add root value to the result.
-# Then, we traverse the right subtree by calling helper(right-subtree)
+# To solve this problem, we use the recursion method.
 
-# In the end, we return left-subtree, node, and right-subtree in order.
+# The base case for the recursion is when root is None, return None.
+
+# Then, we traverse the left subtree by calling preorderTraversal(left-subtree),
+# the right subtree by calling preorderTraversal(right-subtree), and print the node value..
+
+# After all functions returned, we print left-subtree, right-subtree, and node in order.
+
 class Solution(object):
     def postorderTraversal(self, root):
         """
         :type root: TreeNode
         :rtype: List[int]
         """
-        res = []
-        self.helper(root, res)
-        return res
-        
-    def helper(self, root, res):
         if not root:
             return []
-        self.helper(root.left, res)
-        self.helper(root.right, res)
-        res.append(root.val)
+        return self.postorderTraversal(root.left) + self.postorderTraversal(root.right) + [root.val]
         
 # Time complexity: O(n)
 # Space complexity: O(1)
