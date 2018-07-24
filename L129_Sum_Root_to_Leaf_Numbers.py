@@ -9,7 +9,7 @@
 # To solve this problem, we use recursion method.
 
 # The base cases for the recursion is when root is None.
-# This means that the tree us empty, so we should return 0.
+# This means that the tree is empty, so we should return 0.
 
 # Or, if the node exists, we should mutiplty the previous root-to-leaf number by 10,
 # and add the current node value. Now, we update the root-to-leaf number.
