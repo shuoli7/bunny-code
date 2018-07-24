@@ -2,17 +2,17 @@
 # A binary tree
 
 # Output:
-# A list of the preorder traversal of its nodes' values.
-# This means that we want to print out root, left node, right node sequentially.
+# A list of values of tree nodes from preorder traversal
+# (traverse nodes in the order of node -> node.left -> node.right).
 
 # Solution 1:
 # Iterative (BFS)
 
-# To solve this problem, we can build a result list and a stack for help.
-# We store the root into the stack first.
-# Then, we pop the top item in the stack out and add it to result list if it is not Null.
-# Next, we will store thr right of the node, and the left of the node to the stack.
-# While stack is not empty, we will continue to pop items out, and add them to the result list.
+# To solve this problem, we can build a stack for help.
+# The reason we should use stack is that stack is Last-in-First-out, such that we can do DFS.
+
+# As we traverse down the tree, we push node.right, node.left into the stack.
+# and then when we go as far as we can go, we pop the stack out and add its value to res.
 
 class Solution(object):
     def preorderTraversal(self, root):
@@ -34,11 +34,16 @@ class Solution(object):
 # Solution 2:
 # Recursive (DFS)
 
-# To solve this problem, we use the recursive method.
-# First, we visit the root
-# Next, we traverse the left subtree by calling preorderTraversal(left-subtree)
-# as well as the right subtree by calling preorderTraversal(right-subtree)
-# In the end, we return node, left-subtree, and right-subtree in order.
+# To solve this problem, we use the recursion method.
+
+# The base case for the recursion is when root is None, return None.
+
+# Else, we print the node value.
+
+# Then, we traverse the left subtree by calling preorderTraversal(left-subtree)
+# as well as the right subtree by calling preorderTraversal(right-subtree).
+
+# After all functions returned, we print node, left-subtree, and right-subtree in order.
 
 class Solution(object):
     def preorderTraversal(self, root):
