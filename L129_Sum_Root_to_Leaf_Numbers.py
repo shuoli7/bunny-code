@@ -50,5 +50,5 @@ class Solution(object):
             self.helper(node.right, num)
             return self.res
         
-# Time complexity: O(n) # n in all nodes in the tree.     
+# Time complexity: O(n) # All nodes in the tree will be visited.     
 # Space complexity: O(h) # h is the height of tree.
