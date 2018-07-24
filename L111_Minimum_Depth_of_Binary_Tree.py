@@ -38,5 +38,5 @@ class Solution:
         else:
             return max(self.minDepth(root.left), self.minDepth(root.right)) + 1
 
-# Time complexity: O(n) # n in all nodes in the tree.     
+# Time complexity: O(n) # All nodes in the tree will be visited.      
 # Space complexity: O(h) # h is the height of tree.      
