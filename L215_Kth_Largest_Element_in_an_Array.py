@@ -70,3 +70,41 @@ class Solution(object):
         
 # Time complexity: O(n)
 # Space complexity: O(n)
+
+# Solution 3:
+from heapq import *
+class Solution:
+    def findKthLargest(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        if not nums:
+            return -1
+        
+        heap = []
+        for i in range(len(nums)):
+            if len(heap) < k:
+                heappush(heap, nums[i])
+            else:
+                if heap[0] < nums[i]:
+                    heapreplace(heap, nums[i])
+        return heap[0]
+
+# Time complexity: O(k + (n-k)logk)
+# Space complexity: O(n)
+
+# Solution 4:
+from heapq import *
+class Solution:
+    def findKthLargest(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        return heapq.nlargest(k, nums)[-1]
+
+# Time complexity: O(k + (n-k)logk)
+# Space complexity: O(n)
